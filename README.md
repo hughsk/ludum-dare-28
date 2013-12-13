@@ -1,5 +1,7 @@
 # ludum-dare-28 [![Flattr this!](https://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=hughskennedy&url=http://github.com/hughsk/ludum-dare-28&title=ludum-dare-28&description=hughsk/ludum-dare-28%20on%20GitHub&language=en_GB&tags=flattr,github,javascript&category=software)
 
+[![twitch.tv stream](http://streambadge.com/twitch/light/hughsk.png)](http://twitch.tv/hughsk)
+
 Ludum Dare 28 entry - just the boilerplate for now.
 
 ## Running Locally ##
