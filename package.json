@@ -1,0 +1,53 @@
+{
+  "name": "ludum-dare-28",
+  "description": "Ludum Dare 28 entry",
+  "version": "0.0.0",
+  "main": "index.js",
+  "browser": "index.js",
+  "dependencies": {
+    "ecstatic": "~0.4.13",
+    "glslifyify": "~0.1.1",
+    "uglifyify": "~1.0.1",
+    "watchify": "~0.4.1",
+    "uglify-js": "~2.4.7",
+    "through": "~2.3.4",
+    "rework": "~0.18.3",
+    "autoprefixer": "~0.8.20131209",
+    "rework-npm": "~0.1.0",
+    "clean-css": "~2.0.2"
+  },
+  "devDependencies": {
+    "glsl-defines": "0.0.1",
+    "glsl-fog": "0.0.1",
+    "domready": "~0.2.13",
+    "glsl-point-light": "~0.1.0",
+    "glsl-noise": "0.0.0",
+    "game-shell-orbit-camera": "0.0.0",
+    "gl-vao": "0.0.3",
+    "gl-buffer": "~0.1.1",
+    "gl-texture2d": "~0.1.5",
+    "pp-now": "~0.1.0",
+    "gl-shader": "0.0.6",
+    "gl-now": "0.0.4"
+  },
+  "scripts": {
+    "start": "node server",
+    "prepublish": "node build"
+  },
+  "author": "Hugh Kennedy <hughskennedy@gmail.com> (http://hughsk.io/)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/hughsk/ludum-dare-28"
+  },
+  "bugs": {
+    "url": "https://github.com/hughsk/ludum-dare-28/issues"
+  },
+  "homepage": "https://github.com/hughsk/ludum-dare-28",
+  "keywords": [
+    "game",
+    "webgl",
+    "glsl",
+    "jam"
+  ]
+}
