@@ -1,0 +1,23 @@
+<!doctype html>
+
+<html>
+
+  <script src="chirp.min.js"></script>
+
+  <script src="drumkit.min.js"></script>
+
+  <script src="song.js"></script>
+
+  <script>  
+
+    var chirp = new CHIRP.Engine();
+
+    var musicSupported = chirp.start();
+
+    if(musicSupported) {
+      chirp.open(song);
+      chirp.play();
+    }
+
+  </script>
+</html>

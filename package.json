@@ -14,7 +14,9 @@
     "rework": "~0.18.3",
     "autoprefixer": "~0.8.20131209",
     "rework-npm": "~0.1.0",
-    "clean-css": "~2.0.2"
+    "clean-css": "~2.0.2",
+    "raf": "~0.0.3",
+    "heightmap-mesher": "0.0.0"
   },
   "devDependencies": {
     "glsl-defines": "0.0.1",
@@ -31,7 +33,7 @@
     "gl-now": "0.0.4"
   },
   "scripts": {
-    "start": "node server",
+    "start": "supervisor -q -w rework.js,server.js,build.js,bundle.js server.js",
     "prepublish": "node build"
   },
   "author": "Hugh Kennedy <hughskennedy@gmail.com> (http://hughsk.io/)",
