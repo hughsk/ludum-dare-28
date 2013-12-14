@@ -18,7 +18,19 @@ InputSystem.prototype.tick = function tick() {
 //
 var input = controls(
   Object.keys(keys).reduce(function(bindings, id) {
+    if (id > 160) return bindings // ignore special keys like cmd/ctrl/etc.
     var name = keys[id]
+
+    if (name === '<backspace>') return bindings
+    if (name === '<tab>') return bindings
+    if (name === '<clear>') return bindings
+    if (name === '<enter>') return bindings
+    if (name === '<shift>') return bindings
+    if (name === '<control>') return bindings
+    if (name === '<menu>') return bindings
+    if (name === '<meta>') return bindings
+    if (name === '<alt>') return bindings
+
     bindings[name] = 'pressed'
     return bindings
   }, {})

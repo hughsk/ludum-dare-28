@@ -26,23 +26,22 @@ var Player = module.exports = bs.define()
   )
 
 var bars = [
+  // up
   function(game) {
-    this.angle -= 0.05
+    this.position[1] -= this.speediness
   },
-  function(game) {
-    this.position[0] += Math.cos(this.angle) * this.speediness
-    this.position[1] += Math.sin(this.angle) * this.speediness
-  },
+  // spin
   function(game) {
     this.angle += 0.05
   },
+  // special
   function(game, down, up) {
     specials[this.special].emit('tick', this)
-    if (down) {
-      specials[this.special].emit('init', this)
-    } else
-    if (up) {
-      specials[this.special].emit('stop', this)
-    }
-  }
+    if (down) specials[this.special].emit('init', this)
+    if (up)   specials[this.special].emit('stop', this)
+  },
+  // down
+  function(game) {
+    this.position[1] += this.speediness
+  },
 ]
