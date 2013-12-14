@@ -10,7 +10,7 @@ var Player = module.exports = bs.define()
       this.game = window.currentGame
       this.wasPressed = false
       this.speediness = 3
-      this.special = 0
+      this.special = 2
       this.angle = 0
     })
     .on('tick', function(game) {

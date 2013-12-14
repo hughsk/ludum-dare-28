@@ -1,8 +1,10 @@
 // Modules
 var filterElements = require('./lib/filter-element')
+var img = require('./lib/make-image')
 var raf = require('raf')
 
 // Systems
+var projectiles = require('./systems/projectiles')
 var physics = require('./systems/physics')
 var manager = require('./systems/manager')
 var input = require('./systems/input')
@@ -19,6 +21,15 @@ var dom = {
   , 'li')
 }
 
+var images = {
+  sections: [
+      img('css/up.png')
+    , img('css/turn.png')
+    , img('css/go.png')
+    , img('css/down.png')
+  ]
+}
+
 module.exports = Game
 
 function Game() {
@@ -26,15 +37,17 @@ function Game() {
 
   window.currentGame = this
 
-  this.physics = physics(this)
-  this.manager = manager(this)
-  this.input   = input(this)
-  this.beats   = beats(this)
-  this.dom     = dom
+  // systems
+  this.projectiles = projectiles(this)
+  this.physics     = physics(this)
+  this.manager     = manager(this)
+  this.input       = input(this)
+  this.beats       = beats(this)
+  this.dom         = dom
 
   this.player  = new Player(this)
-  this.player.position[0] = window.innerWidth / 2
-  this.player.position[1] = window.innerHeight / 2
+  this.player.position[0] = 0
+  this.player.position[1] = 0
 
   this.start()
 }
@@ -55,6 +68,7 @@ Game.prototype.tick = function tick() {
   this.input.tick()
 
   this.physics.tick()
+  this.projectiles.tick()
 }
 
 var canvas = document.createElement('canvas')
@@ -82,18 +96,26 @@ Game.prototype.render = function() {
   }
 
   ctx.fillRect(0, 0, canvas.width, canvas.height)
-
-  ctx.fillStyle = playing ? '#fff' : '#aaa'
-  if (beating) {
-    scale = 20
-  } else {
-    scale += (10 - scale) * 0.05
-  }
+  ctx.globalAlpha = 0.8
+  ctx.drawImage(images.sections[section], (window.innerWidth-800)/2, (window.innerHeight-600)/2, 800, 600)
+  ctx.globalAlpha = 1
 
   ctx.save()
-  ctx.translate(player.position[0], player.position[1])
-  ctx.rotate(player.angle)
-  ctx.fillRect(-scale, -scale, scale*2, scale*2)
+  ctx.translate(window.innerWidth/2, window.innerHeight/2)
+    ctx.fillStyle = playing ? '#fff' : '#aaa'
+    if (beating) {
+      scale = 20
+    } else {
+      scale += (10 - scale) * 0.05
+    }
+
+    ctx.save()
+    ctx.translate(player.position[0], player.position[1])
+    ctx.rotate(player.angle)
+      ctx.fillRect(-scale, -scale, scale*2, scale*2)
+    ctx.restore()
+
+    this.projectiles.render(ctx)
   ctx.restore()
 }
 
