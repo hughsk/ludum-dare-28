@@ -30,6 +30,10 @@ function stop() {
 
 }
 
+BeatSystem.prototype.tempo = function(tempo) {
+  return this.chirp.setTempo(tempo)
+}
+
 BeatSystem.prototype.beat = function() {
   return this.chirp.tracks[0].position * this.chirp.bpm
 }

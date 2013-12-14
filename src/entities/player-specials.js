@@ -1,6 +1,8 @@
 var EventEmitter = require('events').EventEmitter
 var specials = module.exports = []
+var qpi = Math.PI / 4
 var halfpi = Math.PI / 2
+var pi = Math.PI
 
 var scratch0 = new Float64Array(2)
 var scratch1 = new Float64Array(2)
@@ -29,6 +31,17 @@ fireRate(9, define('Double Shooter'), function(game) {
   scratch1[0] = this.position[0] + Math.cos(this.angle - halfpi) * 10
   scratch1[1] = this.position[1] + Math.sin(this.angle - halfpi) * 10
   game.projectiles.spawn('shooter', 1, scratch1, scratch0, 1, true, 10, 100)
+})
+
+var ps = 0
+fireRate(3, define('Spiral Shooter'), function(game) {
+  ps = (ps+1)%8
+  scratch0[0] = Math.cos(this.angle+qpi*ps) * 6
+  scratch0[1] = Math.sin(this.angle+qpi*ps) * 6
+  game.projectiles.spawn('shooter', 1, this.position, scratch0, 1, true, 10, 100)
+  scratch0[0] = Math.cos(this.angle + qpi*ps+qpi) * 6
+  scratch0[1] = Math.sin(this.angle + qpi*ps+qpi) * 6
+  game.projectiles.spawn('shooter', 1, this.position, scratch0, 1, true, 10, 100)
 })
 
 fireRate(5, define('Scatter Shooter'), function(game) {

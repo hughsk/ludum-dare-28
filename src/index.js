@@ -45,6 +45,8 @@ function Game() {
   this.beats       = beats(this)
   this.dom         = dom
 
+  this.beats.tempo(80)
+
   this.player  = new Player(this)
   this.player.position[0] = 0
   this.player.position[1] = 0
